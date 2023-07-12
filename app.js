@@ -23,6 +23,8 @@ addForm.addEventListener('submit', e => {
         newTemplate(todo);
         addForm.reset();
     }
+
+    localStorage.setItem('todo', todo);
 })
 
 //removing todos from the list using event delegation
@@ -55,3 +57,9 @@ search.addEventListener('keyup', () => {
     const words = search.value.trim().toLowerCase();
     filterTodos(words)
 })
+
+//saving todos to local storage
+if (localStorage.getItem('todo')) {
+    newTemplate(localStorage.getItem('todo'));
+    addForm.reset();
+}
